@@ -5,7 +5,7 @@ int hourglassSum(vector<vector<int>> arr) {
     
     int i = arr.size();
     int j = arr[0].size();
-    auto max=0;
+    auto max=INT_MIN;
     if(i!=3 || j!=3){
         for(auto a=0;a<i-2;a++){
             for(auto b=0;b<j-2;b++){
