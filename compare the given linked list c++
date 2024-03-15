@@ -1,0 +1,20 @@
+You’re given the pointer to the head nodes of two linked lists. Compare the data in the nodes of the linked lists to check if they are equal. If all data attributes are equal and the lists are the same length, return . Otherwise, return .
+*********************************************/***************************************
+
+bool compare_lists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+    SinglyLinkedListNode* child1 = head1;
+    SinglyLinkedListNode* child2 = head2;
+    
+    while( child1 != nullptr && child2 != nullptr){
+        if( child1->data != child2->data){
+            return 0;
+        }else{
+            child1 = child1->next;
+            child2 = child2->next;
+        }
+    }
+    if(child1 != nullptr || child2 != nullptr){
+        return 0;
+    }
+    return 1;
+}
