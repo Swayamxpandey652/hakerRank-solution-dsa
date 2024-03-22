@@ -1,0 +1,18 @@
+Given a pointer to the head of a linked list and a specific position, determine the data value at that position. Count backwards from the tail node. The tail is at postion 0, its parent is at 1 and so on.
+******************************************************************************
+
+int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
+    int length = 0;
+    SinglyLinkedListNode* current = llist;
+    while( current != nullptr){
+        current = current->next;
+        length++;
+    }
+    int posFromHead = length - positionFromTail - 1;
+    //again assign the value of llist to the current
+    current = llist;
+    for( int i = 0; i < posFromHead; ++i){
+        current=current->next;
+    }
+    return current->data;
+}
