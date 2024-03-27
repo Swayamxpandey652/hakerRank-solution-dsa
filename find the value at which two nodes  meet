@@ -1,0 +1,22 @@
+Given pointers to the head nodes of  linked lists that merge together at some point, find the node where the two lists merge. The merge point is where both lists point to the same node, i.e. they reference the same memory location. It is guaranteed that the two head nodes will be different, and neither will be NULL. If the lists share a common node, return that node's  value.
+
+Note: After the merge point, both lists will share the same node pointers.
+*/**********************************************/***********************************************************
+
+int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+   std::unordered_set<SinglyLinkedListNode*> visited_value;
+   while(head1 != nullptr){
+       visited_value.insert(head1);
+       head1 = head1->next;
+   }
+   bool ans = 1;
+   int val;
+   while(ans != 0){
+       if(visited_value.find(head2) != visited_value.end()){
+           ans = 0;
+           val = head2->data;
+       }
+        head2 = head2->next;
+   }
+   return val;
+}
