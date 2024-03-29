@@ -1,0 +1,40 @@
+Given a reference to the head of a doubly-linked list and an integer, , create a new DoublyLinkedListNode object having data value  and insert it at the proper location to maintain the sort.
+********************************************************************************************************
+
+DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* llist, int data) {
+    DoublyLinkedListNode* newnode = new DoublyLinkedListNode(data);
+    newnode->next = nullptr;
+    newnode->prev = nullptr;
+    newnode->data = data;
+    
+    if(data < llist->data){
+        newnode->next = llist;
+        llist->prev = newnode;
+        return newnode;
+    }else{
+        DoublyLinkedListNode* current = llist;
+        while(current->next != nullptr && current->next->data < data){
+        current = current->next;
+        }
+        newnode->next = current->next;
+        if(current->next != nullptr){
+        current->next->prev = newnode;
+        }
+        current->next = newnode;
+        newnode->prev = current;
+        }
+    
+    /* DoublyLinkedListNode* current = llist;
+    while(current->next != nullptr && current->next->data < data){
+        current = current->next;
+    }
+    
+    newnode->next = current->next;
+    if(current->next != nullptr){
+        current->next->prev = newnode;
+    }
+    current->next = newnode;
+    newnode->prev = current;*/
+    
+    return llist;
+}
