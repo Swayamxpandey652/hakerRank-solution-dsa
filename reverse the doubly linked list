@@ -1,0 +1,19 @@
+Given the pointer to the head node of a doubly linked list, reverse the order of the nodes in place. That is, change the next and prev pointers of the nodes so that the direction of the list is reversed. Return a reference to the head node of the reversed list.
+*****************************************************************************************
+
+DoublyLinkedListNode* reverse(DoublyLinkedListNode* llist) {
+    DoublyLinkedListNode* current = llist;
+    DoublyLinkedListNode* temp = nullptr;
+    
+    while(current != nullptr){
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
+    }
+    if(temp != nullptr){
+        llist = temp->prev;
+    }
+    
+    return llist;
+}
