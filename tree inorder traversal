@@ -1,0 +1,21 @@
+In this challenge, you are required to implement inorder traversal of a tree.
+
+Complete the  function in your editor below, which has  parameter: a pointer to the root of a binary tree. It must print the values in the tree's inorder traversal as a single line of space-separated values.
+*************************************************************************************************
+
+void inOrder(Node *root) {
+        std::stack<Node*> s;
+        Node* current = root;
+        while(!s.empty() || current != nullptr){
+            if(current != nullptr){
+                s.push(current);
+                current = current->left;
+            }else{
+                current = s.top();
+                std::cout<<current->data<<" ";
+                s.pop();
+                current = current->right;
+            }
+        }
+         
+    }
