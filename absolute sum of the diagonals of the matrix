@@ -1,0 +1,16 @@
+Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+***********************************************************************
+
+int diagonalDifference(vector<vector<int>> arr) {
+    int n = arr.size()-1;
+    int diagonal1 = 0;
+    int diagonal2 = 0;
+    int absoluteSum = 0;
+    for(int i=0;i<=n;i++){
+        diagonal1 += arr[i][i];
+    }
+    for(int i=0;i<=n;i++){
+        diagonal2 += arr[i][n-i];
+    }
+    return absoluteSum = std::abs(diagonal1 - diagonal2);
+}
