@@ -1,0 +1,28 @@
+The height of a binary tree is the number of edges between the tree's root and its furthest leaf. 
+Complete the getHeight or height function in the editor. It must return the height of a binary tree as an integer.
+
+getHeight or height has the following parameter(s):
+
+root: a reference to the root of a binary tree.
+*************************************************************************************************************
+
+int height(Node* root) {
+        std::pair<Node*, int> pair;
+        std::stack<::pair<Node*,int>> st;
+        st.push({root, 0});
+        int max_height = 0;
+        while(!st.empty()){
+            auto [node,height] = st.top();
+            st.pop();
+            
+            max_height = std::max(max_height,height);
+            
+            if(node->left){
+                st.push({node->left,height+1});
+            }
+            if(node->right){
+                st.push({node->right,height+1});
+            }
+        }
+        return max_height;
+    }
