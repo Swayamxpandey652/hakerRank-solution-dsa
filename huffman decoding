@@ -1,0 +1,28 @@
+Complete the function decode_huff in the editor below. It must return the decoded string.
+
+decode_huff has the following parameters:
+
+root: a reference to the root node of the Huffman tree
+s: a Huffman encoded string
+Input Format
+
+There is one line of input containing the plain string, . Background code creates the Huffman tree then passes the head node and the encoded string to the function.
+**************************************************************************************
+
+void decode_huff(node * root, string s) {
+    
+    string ans;
+    
+    node* current = root;
+    for(char i: s){
+        if(i == '0'){
+            current = current->left;
+        }else{
+            current = current->right;
+        }
+        if(current->left == nullptr && current->right == nullptr){
+            std::cout<<current->data;
+            current = root;
+        }
+    }
+}
