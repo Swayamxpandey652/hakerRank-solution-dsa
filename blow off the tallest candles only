@@ -1,0 +1,10 @@
+You are in charge of the cake for a child's birthday. You have decided the cake will have one candle for each year of their total age. They will only be able to blow out the tallest of the candles. Count how many candles are ta
+*******************************************************************************
+
+function birthdayCakeCandles(candles) {
+    // Write your code here
+    let max_height = Math.max(...candles);
+    const tallestCandle = candles.filter(length => length === max_height);
+    let length = tallestCandle.length;
+    return length;
+}
