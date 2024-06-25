@@ -1,0 +1,47 @@
+/*Given a time in -hour AM/PM format, convert it to military (24-hour) time.
+
+Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+- 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
+
+Example
+
+
+Return '12:01:00'.
+
+
+Return '00:01:00'.
+
+Function Description
+
+Complete the timeConversion function in the editor below. It should return a new string representing the input time in 24 hour format.
+
+timeConversion has the following parameter(s):
+
+string s: a time in  hour format*/
+**************************************************************************************
+
+function timeConversion(s) {
+    // Write your code here
+    let arr = s.slice(0,-2).split(':');
+    let period = s.slice(-2);
+    
+    let hours = parseInt(arr[0],10);
+    let minutes = parseInt(arr[1],10);
+    let seconds = parseInt(arr[2],10);
+    
+    if (period === 'AM') {
+        if (hours === 12) {
+            hours = 0; // Midnight case
+        }
+    } else if (period === 'PM') {
+        if (hours !== 12) {
+            hours += 12; // PM case, not noon
+        }
+    }
+    
+    hours = hours.toString().padStart(2,'0');
+    minutes = minutes.toString().padStart(2,'0');
+    seconds = seconds.toString().padStart(2,'0');
+    
+    return `${hours}:${minutes}:${seconds}`;
+}
